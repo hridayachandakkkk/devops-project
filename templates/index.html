@@ -9,18 +9,21 @@
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             text-align: center;
+            overflow: hidden;
         }
 
         .container {
-            margin-top: 150px;
+            margin-top: 120px;
         }
 
         h1 {
             font-size: 50px;
+            animation: fadeIn 2s ease-in-out;
         }
 
         p {
             font-size: 22px;
+            animation: fadeIn 3s ease-in-out;
         }
 
         .btn {
@@ -30,16 +33,74 @@
             background: white;
             color: #764ba2;
             border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #f1f1f1;
+            transform: scale(1.1);
+        }
+
+        .msg {
+            margin-top: 20px;
+            font-size: 20px;
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        /* floating circles animation */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            animation: float 10s infinite;
+        }
+
+        .circle:nth-child(1) {
+            width: 100px; height: 100px;
+            left: 10%; top: 80%;
+        }
+
+        .circle:nth-child(2) {
+            width: 150px; height: 150px;
+            left: 70%; top: 90%;
+            animation-duration: 12s;
+        }
+
+        @keyframes float {
+            from {transform: translateY(0);}
+            to {transform: translateY(-800px);}
         }
     </style>
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>🚀 DevOps CI/CD</h1>
-        <p>Deployed using Jenkins & Docker</p>
-        <button class="btn">Success ✅</button>
+<div class="container">
+    <h1>🚀 DevOps CI/CD</h1>
+    <p>Automated Deployment using Jenkins & Docker</p>
+
+    <button class="btn" onclick="showMessage()">Click Me 🚀</button>
+
+    <div class="msg" id="msg">
+        🎉 Deployment Successful!
     </div>
+</div>
+
+<!-- floating background -->
+<div class="circle"></div>
+<div class="circle"></div>
+
+<script>
+function showMessage() {
+    document.getElementById("msg").style.display = "block";
+}
+</script>
 
 </body>
 </html>
